@@ -792,8 +792,17 @@ nav a:hover { color: #00d4ff; }
 
 .sig-line {
     font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
+    font-size: 2.2rem; /* Matches your screenshot size */
     color: #00d4ff !important;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5); /* Adds that neon glow */
+    margin-right: 15px;
+}
+
+.sig-label {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
 .date span {
