@@ -688,145 +688,118 @@ nav a:hover { color: #00d4ff; }
 }
 
 .certificate-container {
-    margin-top: 80px;
+    min-height: 550px; 
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    perspective: 1000px; /* Adds 3D depth for the hover effect */
 }
 
 .certificate-card {
-    width: 100%;
-    max-width: 650px;
-    background: linear-gradient(145deg, #0f172a, #020617); /* Subtly darker gradient */
-    border: 1px solid rgba(0, 212, 255, 0.4); /* Glowing blue border */
-    border-radius: 20px;
-    padding: 50px;
     position: relative;
+    background: #080f1e; /* Slightly lighter than body to create separation */
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 24px;
+    padding: 60px;
+    width: 100%;
+    max-width: 850px;
     overflow: hidden;
-    text-align: left;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.1);
-    transition: transform 0.4s ease;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
-/* Interactivity (Subtle lift) */
 .certificate-card:hover {
-    transform: translateY(-10px) rotateX(2deg);
+    transform: translateY(-10px) rotateX(4deg);
     border-color: #00d4ff;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 212, 255, 0.15);
 }
 
-/* The Neon Hologram Glow */
+/* The Neon Glow - Moved to absolute back */
 .card-glow {
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+    top: -20%;
+    right: -20%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1; 
 }
 
-.certificate-card * {
-    z-index: 1; /* Puts all text above the glow */
+/* Force all content to the front layer */
+.certificate-card .card-header,
+.certificate-card .cert-content,
+.certificate-card .card-footer {
     position: relative;
+    z-index: 10; 
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 15px;
-}
-
-.card-header .logo {
-    font-size: 1.6rem;
-    letter-spacing: 4px;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
-}
-
-.card-id {
-    font-size: 0.7rem;
-    color: #475569;
-    letter-spacing: 2px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 20px;
 }
 
 .cert-label {
     display: block;
-    color: #64748b;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 4px;
+    color: #00d4ff; /* Changed to Cyan for better visibility */
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
 }
 
 .certificate-card h3 {
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: white;
-    line-height: 1;
-    margin-bottom: 25px;
-    letter-spacing: -1px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    font-size: 2.5rem;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .cert-text {
-    color: #94a3b8;
-    font-size: 1rem;
+    color: #cbd5e1; /* Lighter grey for readability */
+    font-size: 1.1rem;
     line-height: 1.7;
-    margin-bottom: 25px;
-    max-width: 500px;
-}
-
-.cert-text strong {
-    color: #00d4ff;
-    font-weight: 600;
+    margin: 0 auto 30px;
+    max-width: 600px;
 }
 
 .project-line {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 40px;
-    padding-left: 15px;
-    border-left: 2px solid rgba(0, 212, 255, 0.2);
-}
-
-.project-line strong {
-    color: white;
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 50px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    display: inline-block;
 }
 
 .card-footer {
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
 }
 
 .sig-line {
-    font-family: 'Dancing Script', cursive; /* Optional: adds a signature font */
-    font-size: 1.8rem;
-    color: white;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.sig-label {
-    font-size: 0.7rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #00d4ff !important;
 }
 
 .date span {
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.9rem;
     color: #ffffff;
-    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 /* Syllabus Modal Styling */
