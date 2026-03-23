@@ -520,6 +520,44 @@
                 syllabusModal.style.display = 'none';
             }
         });
+
+
+        // 1. Syllabus Modal Logic
+        const syllabusBtn = document.querySelector('.outline-btn'); // The View Syllabus button
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const closeModal = document.querySelector('.close-modal');
+
+        if(syllabusBtn) {
+            syllabusBtn.onclick = () => modalOverlay.style.display = 'flex';
+        }
+
+        if(closeModal) {
+            closeModal.onclick = () => modalOverlay.style.display = 'none';
+        }
+
+        // 2. Success Message Logic (For the Enrollment Form)
+        const enrollForm = document.querySelector('.enroll-form');
+        const successOverlay = document.querySelector('.overlay'); // Your Success Popup
+        const closeSuccess = document.querySelector('.close-btn');
+
+        if(enrollForm) {
+            enrollForm.onsubmit = (e) => {
+                e.preventDefault(); // Prevents page reload
+                successOverlay.style.display = 'flex';
+                enrollForm.reset(); // Clears the form fields
+            };
+        }
+
+        if(closeSuccess) {
+            closeSuccess.onclick = () => successOverlay.style.display = 'none';
+        }
+
+        // 3. Close overlays if clicking outside the card
+        window.onclick = (event) => {
+            if (event.target == modalOverlay) modalOverlay.style.display = "none";
+            if (event.target == successOverlay) successOverlay.style.display = "none";
+        }
+
     </script>
 </body>
 </html>

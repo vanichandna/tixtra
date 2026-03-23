@@ -49,7 +49,6 @@ nav a:hover { color: #00d4ff; }
     background: #050a0f;
     position: relative;
     overflow: hidden;
-    
 }
 
 .hero-left { flex: 1; text-align: left; }
@@ -61,42 +60,41 @@ nav a:hover { color: #00d4ff; }
 /* --- Global Responsive Fluidity (Crucial for this effect) --- */
 * { box-sizing: border-box; }
 
-/* The new Hero Canvas with the visualization as the actual background */
+/* --- Optimized Hero with +300px Shift --- */
 .hero.sprawling-background {
     position: relative;
-    width: 150%;
-    min-height: 90vh; /* Fills full viewport height */
-    padding: 180px 10%; /* Extra padding to prevent nav overlap */
-    background-color: #050a0f; /* Base dark color from image */
+    width: 100%; 
+    min-height: 100vh;
+    padding: 180px 10% 60px;
+    background-color: #050a0f;
+    display: flex;
+    align-items: center;
+    overflow: hidden; 
     
-    /* THE MAGICAL CHANGE: Set image as background, NOT as content */
-    background-image: url('dashboard-logic-gap.png'); /* <--- Replace with your filename */
+    /* THE OFFSET FIX */
+    background-image: url('dashboard-logic-gap.png');
     background-repeat: no-repeat;
-    background-size: cover; /* Forces the image to scale, not stretch */
-    background-position: 100% 50%; /* Aligns the visual core to the text */
-    overflow: hidden; /* Important for the boundaries-free look */
+    background-size: auto 85%; 
+    background-position: calc(100% + 300px) center; 
 }
 
-/* Make a transparent gradient mask *over* the visual so the text remains readable */
 .hero.sprawling-background::before {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(
         to right, 
-        rgba(5, 10, 15, 0.95) 20%, /* Solid dark over the text section */
-        rgba(5, 10, 15, 0.6) 60%,  /* Fades over the chip visual */
+        #050a0f 30%, 
+        rgba(5, 10, 15, 0.8) 60%, 
         transparent 100%
     );
-    z-index: 1; /* Sits over the image */
+    z-index: 1;
 }
 
-/* Force the text content to stay above the mask */
 .hero-open-canvas {
     position: relative;
-    z-index: 10; /* Important! Must be higher than ::before mask z-index */
-    max-width: 650px; /* Limits the text width for readability */
-    color: white;
+    z-index: 10; 
+    max-width: 650px;
 }
 
 /* Your typography styles stay the same */
@@ -296,6 +294,80 @@ h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 0 
     padding: 8px 16px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Founder Section Architect Layout --- */
+.founder-section {
+    padding: 120px 10%;
+    background: #02060a;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.founder-wrapper {
+    display: flex;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.founder-visual {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-frame {
+    width: 280px;
+    height: 350px;
+    background: linear-gradient(145deg, #0f172a, #020617);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #00d4ff;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.founder-info {
+    flex: 1.5;
+    text-align: left;
+}
+
+.founder-info h2 { font-size: 3rem; margin-bottom: 5px; }
+
+.bio-content blockquote {
+    border-left: 3px solid #00d4ff;
+    padding-left: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.rigor-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.rigor-list li {
+    color: #94a3b8;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.rigor-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #00d4ff;
+    font-weight: bold;
 }
 
 
@@ -1160,6 +1232,107 @@ footer { padding: 60px 10%; border-top: 1px solid #ffffff05; text-align: center;
     color: #00d4ff;
     font-weight: 800;
 }
+
+/* --- New Curriculum Timeline Roadmap --- */
+.curriculum-section {
+    padding: 120px 10%;
+    background: #02060a; /* Matches your background-color theme */
+    text-align: center;
+}
+
+.timeline-container {
+    max-width: 800px;
+    margin: 60px auto 0;
+    position: relative;
+    text-align: left;
+    padding-left: 50px;
+}
+
+/* The Vertical Power Line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    /* Gradient using your Neon Cyan */
+    background: linear-gradient(to bottom, #1e293b, #00d4ff, #1e293b);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.timeline-phase {
+    position: relative;
+    margin-bottom: 60px;
+    transition: 0.4s;
+}
+
+.phase-info {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.timeline-phase:hover .phase-info {
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.03);
+    transform: translateX(10px);
+}
+
+.phase-dot {
+    position: absolute;
+    left: -48px;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    background: #050a0f;
+    border: 2px solid #1e293b;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-phase:hover .phase-dot {
+    background: #00d4ff;
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px #00d4ff;
+}
+
+/* Specific Highlight for Phase 3 (Capstone) */
+.active-phase .phase-info {
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-dot {
+    background: #00d4ff;
+    box-shadow: 0 0 20px #00d4ff;
+}
+
+/* Typography inside Curriculum */
+.week-label {
+    color: #00d4ff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.phase-info h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.phase-info p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 
 /* --- Enhanced Responsive Handling --- */
 @media (max-width: 1024px) {

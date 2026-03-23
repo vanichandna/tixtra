@@ -10,12 +10,19 @@
 
     <nav>
         <div class="logo">TIXTRA</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#curriculum">Curriculum</a></li>
-            <li><a href="#about">About</a></li>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="index.html#outcomes">Outcomes</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><button class="invite-btn">Apply Now</button></li>
         </ul>
-        <button class="invite-btn">Apply Now</button>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <header class="hero sprawling-background">
@@ -67,48 +74,25 @@
         </div>
     </section>
 
-    <section class="founder-section" id="about">
-        <div class="founder-wrapper">
-            <div class="founder-visual">
-                <div class="profile-frame">
-                    VC
-                    <div class="frame-glow"></div>
-                </div>
-                <div class="philosophy-tags">
-                    <span>#LogicGaps</span>
-                    <span>#AIFoundations</span>
-                    <span>#MathTutor</span>
-                </div>
-            </div>
-
-            <div class="founder-info">
-                <span class="cert-label">The Architect</span>
-                <h2>Vani C.</h2>
-                <p class="role">Professional Mathematics Tutor & Educational Entrepreneur</p>
-                
-                <div class="bio-content">
-                    <p>Most students don’t struggle with AI because of the code—they struggle because of the <strong>"Logic Gaps"</strong> in the underlying mathematics.</p>
-                    <p>As a specialist in bridging these gaps for advanced Calculus and Linear Algebra, I built <strong>Tixtra</strong> to provide the rigor required for the next generation of AI Innovators.</p>
-                    <blockquote>
-                        "We don't just teach tools; we build the intuition to understand how those tools actually think."
-                    </blockquote>
-                </div>
-
-                <div class="methodology-preview">
-                    <h4>The Vani C. Methodology:</h4>
-                    <ul class="rigor-list">
-                        <li>Concept-first, syntax-second approach.</li>
-                        <li>Analogy-driven visualization of high-dimensional space.</li>
-                        <li>Direct application of IB and AP curricula to ML models.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <p>&copy; 2026 Tixtra Labs. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
